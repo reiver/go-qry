@@ -10,7 +10,7 @@ func marshalQRY[T any](name string, units ...Unit[T]) ([]byte, error) {
 	var p []byte = buffer[0:0]
 
 	p = append(p, '{')
-	p = append(p, "identity"...)
+	p = append(p, name...)
 
 	for index, unit := range units {
 		var marshaler Marshaler = unit
