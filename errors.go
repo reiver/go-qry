@@ -5,6 +5,7 @@ import (
 )
 
 const (
-	errNilEvaluator = erorr.Error("qry: nil evaluator")
-	errNilMarshaler = erorr.Error("qry: nil marhshaler")
+	errCannotMarshalNil = erorr.Error("qry: cannot qry-marshal nil")
+	errNilEvaluator     = erorr.Error("qry: nil evaluator")
+	errNilMarshaler     = erorr.Error("qry: nil marhshaler")
 )
