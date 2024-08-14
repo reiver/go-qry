@@ -7,7 +7,6 @@ type Identity[T any] struct {
 var _ Unit[string] = Identity[string]{}
 
 func (receiver Identity[T]) Evaluate(value T) (bool, error) {
-
 	var empty bool
 
 	var evaluator Evaluator[T] = receiver.Unit
