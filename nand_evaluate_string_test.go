@@ -2,10 +2,11 @@ package qry_test
 
 import (
 	"testing"
+
 	"github.com/reiver/go-qry"
 )
 
-func TestAnd(t *testing.T) {
+func TestNand_Evaluate(t *testing.T) {
 
 	tests := []struct{
 		Units []qry.Unit[string]
@@ -13,65 +14,65 @@ func TestAnd(t *testing.T) {
 	}{
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}},
-			Expected: true,
+			Expected: false,
 		},
 
 
 
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}},
-			Expected: true,
+			Expected: false,
 		},
 
 
 
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}, qry.False[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}, qry.True[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}, qry.False[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}, qry.True[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}, qry.False[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}, qry.True[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}, qry.False[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}, qry.True[string]{}},
-			Expected: true,
+			Expected: false,
 		},
 	}
 
@@ -94,7 +95,7 @@ func TestAnd(t *testing.T) {
 
 		for textNumber, text := range texts {
 
-			var evaluator qry.Evaluator[string] = qry.And[string]{Units:test.Units}
+			var evaluator qry.Evaluator[string] = qry.Nand[string]{Units:test.Units}
 
 			actual, err := evaluator.Evaluate(text)
 
@@ -102,7 +103,7 @@ func TestAnd(t *testing.T) {
 				t.Errorf("For test #%d and text #%d, did not expect an error but actually got one.", testNumber, textNumber)
 				t.Logf("ERROR: (%T) %s", err, err)
 				t.Logf("TEXT: %q", text)
-				t.Logf("UNITS:  %#v", test.Units)
+				t.Logf("UNIT:  %#v", test.Units)
 				continue
 			}
 
@@ -114,7 +115,7 @@ func TestAnd(t *testing.T) {
 					t.Logf("EXPECTED: %t", expected)
 					t.Logf("ACTUAL:   %t", actual)
 					t.Logf("TEXT: %q", text)
-					t.Logf("UNITS:  %#v", test.Units)
+					t.Logf("UNIT:  %#v", test.Units)
 					continue
 				}
 			}

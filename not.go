@@ -1,16 +1,16 @@
 package qry
 
 type Not[T any] struct {
-	Evaluator Evaluator[T]
+	Unit Unit[T]
 }
 
-var _ Evaluator[string] = Not[string]{}
+var _ Unit[string] = Not[string]{}
 
 func (receiver Not[T]) Evaluate(value T) (bool, error) {
 
 	var empty bool
 
-	var evaluator Evaluator[T] = receiver.Evaluator
+	var evaluator Evaluator[T] = receiver.Unit
 	if nil == evaluator {
 		return empty, errNilEvaluator
 	}
@@ -21,4 +21,9 @@ func (receiver Not[T]) Evaluate(value T) (bool, error) {
 	}
 
 	return !result, nil
+}
+
+func (receiver Not[T]) MarshalQRY() ([]byte, error) {
+	const name string = "not"
+	return marshalQRY[T](name, receiver.Unit)
 }

@@ -1,15 +1,17 @@
 package qry
 
 type Or[T any] struct {
-	Evaluators []Evaluator[T]
+	Units []Unit[T]
 }
 
-var _ Evaluator[string] = Or[string]{}
+var _ Unit[string] = Or[string]{}
 
 func (receiver Or[T]) Evaluate(value T) (bool, error) {
 	var empty bool
 
-	for _, evaluator := range receiver.Evaluators {
+	for _, unit := range receiver.Units {
+		var evaluator Evaluator[T] = unit
+
 		if nil == evaluator {
 			return empty, errNilEvaluator
 		}
@@ -24,4 +26,9 @@ func (receiver Or[T]) Evaluate(value T) (bool, error) {
 		}
 	}
 	return false, nil
+}
+
+func (receiver Or[T]) MarshalQRY() ([]byte, error) {
+	const name string = "or"
+	return marshalQRY(name, receiver.Units...)
 }

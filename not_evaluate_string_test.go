@@ -6,19 +6,19 @@ import (
 	"github.com/reiver/go-qry"
 )
 
-func TestIdentity(t *testing.T) {
+func TestNot_Evaluate(t *testing.T) {
 
 	tests := []struct{
-		Evaluator qry.Evaluator[string]
+		Unit qry.Unit[string]
 		Expected bool
 	}{
 		{
-			Evaluator: qry.False[string]{},
-			Expected: false,
+			Unit: qry.False[string]{},
+			Expected: true,
 		},
 		{
-			Evaluator: qry.True[string]{},
-			Expected: true,
+			Unit: qry.True[string]{},
+			Expected: false,
 		},
 	}
 
@@ -41,7 +41,7 @@ func TestIdentity(t *testing.T) {
 
 		for textNumber, text := range texts {
 
-			var evaluator qry.Evaluator[string] = qry.Identity[string]{Evaluator:test.Evaluator}
+			var evaluator qry.Evaluator[string] = qry.Not[string]{Unit:test.Unit}
 
 			actual, err := evaluator.Evaluate(text)
 
@@ -49,7 +49,7 @@ func TestIdentity(t *testing.T) {
 				t.Errorf("For test #%d and text #%d, did not expect an error but actually got one.", testNumber, textNumber)
 				t.Logf("ERROR: (%T) %s", err, err)
 				t.Logf("TEXT: %q", text)
-				t.Logf("EVALUATOR: %#v", test.Evaluator)
+				t.Logf("UNIT: %#v", test.Unit)
 				continue
 			}
 
@@ -61,7 +61,7 @@ func TestIdentity(t *testing.T) {
 					t.Logf("EXPECTED: %t", expected)
 					t.Logf("ACTUAL:   %t", actual)
 					t.Logf("TEXT: %q", text)
-					t.Logf("EVALUATOR: %#v", test.Evaluator)
+					t.Logf("UNIT: %#v", test.Unit)
 					continue
 				}
 			}

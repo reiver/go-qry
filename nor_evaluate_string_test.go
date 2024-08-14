@@ -2,10 +2,11 @@ package qry_test
 
 import (
 	"testing"
+
 	"github.com/reiver/go-qry"
 )
 
-func TestAnd(t *testing.T) {
+func TestNor_Evaluate(t *testing.T) {
 
 	tests := []struct{
 		Units []qry.Unit[string]
@@ -13,18 +14,18 @@ func TestAnd(t *testing.T) {
 	}{
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}},
-			Expected: true,
+			Expected: false,
 		},
 
 
 
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}},
@@ -36,14 +37,14 @@ func TestAnd(t *testing.T) {
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}},
-			Expected: true,
+			Expected: false,
 		},
 
 
 
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}, qry.False[string]{}},
-			Expected: false,
+			Expected: true,
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}, qry.True[string]{}},
@@ -71,7 +72,7 @@ func TestAnd(t *testing.T) {
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}, qry.True[string]{}},
-			Expected: true,
+			Expected: false,
 		},
 	}
 
@@ -94,7 +95,7 @@ func TestAnd(t *testing.T) {
 
 		for textNumber, text := range texts {
 
-			var evaluator qry.Evaluator[string] = qry.And[string]{Units:test.Units}
+			var evaluator qry.Evaluator[string] = qry.Nor[string]{Units:test.Units}
 
 			actual, err := evaluator.Evaluate(text)
 

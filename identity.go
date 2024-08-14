@@ -1,16 +1,16 @@
 package qry
 
 type Identity[T any] struct {
-	Evaluator Evaluator[T]
+	Unit Unit[T]
 }
 
-var _ Evaluator[string] = Identity[string]{}
+var _ Unit[string] = Identity[string]{}
 
 func (receiver Identity[T]) Evaluate(value T) (bool, error) {
 
 	var empty bool
 
-	var evaluator Evaluator[T] = receiver.Evaluator
+	var evaluator Evaluator[T] = receiver.Unit
 	if nil == evaluator {
 		return empty, errNilEvaluator
 	}
@@ -21,4 +21,9 @@ func (receiver Identity[T]) Evaluate(value T) (bool, error) {
 	}
 
 	return result, nil
+}
+
+func (receiver Identity[T]) MarshalQRY() ([]byte, error) {
+	const name string = "identity"
+	return marshalQRY[T](name, receiver.Unit)
 }
