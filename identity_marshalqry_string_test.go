@@ -20,6 +20,17 @@ func TestIdentity_MarshalQRY_string(t *testing.T) {
 			Unit: qry.True[string]{},
 			Expected: "{identity true}",
 		},
+
+
+
+		{
+			Unit: qry.Identity[string]{qry.False[string]{}},
+			Expected: "{identity {identity false}}",
+		},
+		{
+			Unit: qry.Identity[string]{qry.True[string]{}},
+			Expected: "{identity {identity true}}",
+		},
 	}
 
 	for testNumber, test := range tests {

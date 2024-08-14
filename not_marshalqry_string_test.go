@@ -20,6 +20,17 @@ func TestNot_MarshalQRY_string(t *testing.T) {
 			Unit: qry.True[string]{},
 			Expected: "{not true}",
 		},
+
+
+
+		{
+			Unit: qry.Not[string]{qry.False[string]{}},
+			Expected: "{not {not false}}",
+		},
+		{
+			Unit: qry.Not[string]{qry.True[string]{}},
+			Expected: "{not {not true}}",
+		},
 	}
 
 	for testNumber, test := range tests {
