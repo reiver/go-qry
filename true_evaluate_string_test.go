@@ -6,7 +6,7 @@ import (
 	"github.com/reiver/go-qry"
 )
 
-func TestFalse_string(t *testing.T) {
+func TestTrue_Evaluate_string(t *testing.T) {
 
 	tests := []struct{
 		String string
@@ -14,28 +14,28 @@ func TestFalse_string(t *testing.T) {
 	}{
 		{
 			String: "",
-			Expected: false,
+			Expected: true,
 		},
 
 
 
 		{
 			String: "apple",
-			Expected: false,
+			Expected: true,
 		},
 		{
 			String: "banana",
-			Expected: false,
+			Expected: true,
 		},
 		{
 			String: "cherry",
-			Expected: false,
+			Expected: true,
 		},
 	}
 
 	for testNumber, test := range tests {
 
-		var evaluator qry.Evaluator[string] = qry.False[string]{}
+		var evaluator qry.Evaluator[string] = qry.True[string]{}
 
 		actual, err := evaluator.Evaluate(test.String)
 
