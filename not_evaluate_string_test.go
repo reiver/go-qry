@@ -6,7 +6,7 @@ import (
 	"github.com/reiver/go-qry"
 )
 
-func TestNot_Evaluate(t *testing.T) {
+func TestNot_Evaluate_string(t *testing.T) {
 
 	tests := []struct{
 		Unit qry.Unit[string]

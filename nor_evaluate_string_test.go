@@ -6,7 +6,7 @@ import (
 	"github.com/reiver/go-qry"
 )
 
-func TestNor_Evaluate(t *testing.T) {
+func TestNor_Evaluate_string(t *testing.T) {
 
 	tests := []struct{
 		Units []qry.Unit[string]

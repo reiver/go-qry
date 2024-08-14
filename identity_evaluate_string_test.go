@@ -6,7 +6,7 @@ import (
 	"github.com/reiver/go-qry"
 )
 
-func TestIdentity_Evaluate(t *testing.T) {
+func TestIdentity_Evaluate_string(t *testing.T) {
 
 	tests := []struct{
 		Unit qry.Unit[string]
