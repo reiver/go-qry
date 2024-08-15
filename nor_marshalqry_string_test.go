@@ -14,65 +14,65 @@ func TestNor_MarshalQRY_string(t *testing.T) {
 	}{
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}},
-			Expected: "{nor false}",
+			Expected: "{nor {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}},
-			Expected: "{nor true}",
+			Expected: "{nor {true}}",
 		},
 
 
 
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}},
-			Expected: "{nor false false}",
+			Expected: "{nor {false} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}},
-			Expected: "{nor false true}",
+			Expected: "{nor {false} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}},
-			Expected: "{nor true false}",
+			Expected: "{nor {true} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}},
-			Expected: "{nor true true}",
+			Expected: "{nor {true} {true}}",
 		},
 
 
 
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}, qry.False[string]{}},
-			Expected: "{nor false false false}",
+			Expected: "{nor {false} {false} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}, qry.True[string]{}},
-			Expected: "{nor false false true}",
+			Expected: "{nor {false} {false} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}, qry.False[string]{}},
-			Expected: "{nor false true false}",
+			Expected: "{nor {false} {true} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}, qry.True[string]{}},
-			Expected: "{nor false true true}",
+			Expected: "{nor {false} {true} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}, qry.False[string]{}},
-			Expected: "{nor true false false}",
+			Expected: "{nor {true} {false} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}, qry.True[string]{}},
-			Expected: "{nor true false true}",
+			Expected: "{nor {true} {false} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}, qry.False[string]{}},
-			Expected: "{nor true true false}",
+			Expected: "{nor {true} {true} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}, qry.True[string]{}},
-			Expected: "{nor true true true}",
+			Expected: "{nor {true} {true} {true}}",
 		},
 	}
 

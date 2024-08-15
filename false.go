@@ -9,6 +9,6 @@ func (receiver False[T]) Evaluate(value T) (bool, error) {
 }
 
 func (receiver False[T]) MarshalQRY() ([]byte, error) {
-	var data [5]byte = [5]byte{'f','a','l','s','e'}
+	var data [7]byte = [7]byte{'{','f','a','l','s','e','}'}
 	return data[:], nil
 }

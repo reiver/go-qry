@@ -14,65 +14,65 @@ func TestAnd_MarshalQRY_string(t *testing.T) {
 	}{
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}},
-			Expected: "{and false}",
+			Expected: "{and {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}},
-			Expected: "{and true}",
+			Expected: "{and {true}}",
 		},
 
 
 
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}},
-			Expected: "{and false false}",
+			Expected: "{and {false} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}},
-			Expected: "{and false true}",
+			Expected: "{and {false} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}},
-			Expected: "{and true false}",
+			Expected: "{and {true} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}},
-			Expected: "{and true true}",
+			Expected: "{and {true} {true}}",
 		},
 
 
 
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}, qry.False[string]{}},
-			Expected: "{and false false false}",
+			Expected: "{and {false} {false} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}, qry.True[string]{}},
-			Expected: "{and false false true}",
+			Expected: "{and {false} {false} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}, qry.False[string]{}},
-			Expected: "{and false true false}",
+			Expected: "{and {false} {true} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}, qry.True[string]{}},
-			Expected: "{and false true true}",
+			Expected: "{and {false} {true} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}, qry.False[string]{}},
-			Expected: "{and true false false}",
+			Expected: "{and {true} {false} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}, qry.True[string]{}},
-			Expected: "{and true false true}",
+			Expected: "{and {true} {false} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}, qry.False[string]{}},
-			Expected: "{and true true false}",
+			Expected: "{and {true} {true} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}, qry.True[string]{}},
-			Expected: "{and true true true}",
+			Expected: "{and {true} {true} {true}}",
 		},
 	}
 

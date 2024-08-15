@@ -14,65 +14,65 @@ func TestOr_MarshalQRY_string(t *testing.T) {
 	}{
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}},
-			Expected: "{or false}",
+			Expected: "{or {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}},
-			Expected: "{or true}",
+			Expected: "{or {true}}",
 		},
 
 
 
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}},
-			Expected: "{or false false}",
+			Expected: "{or {false} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}},
-			Expected: "{or false true}",
+			Expected: "{or {false} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}},
-			Expected: "{or true false}",
+			Expected: "{or {true} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}},
-			Expected: "{or true true}",
+			Expected: "{or {true} {true}}",
 		},
 
 
 
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}, qry.False[string]{}},
-			Expected: "{or false false false}",
+			Expected: "{or {false} {false} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.False[string]{}, qry.True[string]{}},
-			Expected: "{or false false true}",
+			Expected: "{or {false} {false} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}, qry.False[string]{}},
-			Expected: "{or false true false}",
+			Expected: "{or {false} {true} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.False[string]{}, qry.True[string]{}, qry.True[string]{}},
-			Expected: "{or false true true}",
+			Expected: "{or {false} {true} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}, qry.False[string]{}},
-			Expected: "{or true false false}",
+			Expected: "{or {true} {false} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.False[string]{}, qry.True[string]{}},
-			Expected: "{or true false true}",
+			Expected: "{or {true} {false} {true}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}, qry.False[string]{}},
-			Expected: "{or true true false}",
+			Expected: "{or {true} {true} {false}}",
 		},
 		{
 			Units: []qry.Unit[string]{qry.True[string]{}, qry.True[string]{}, qry.True[string]{}},
-			Expected: "{or true true true}",
+			Expected: "{or {true} {true} {true}}",
 		},
 	}
 

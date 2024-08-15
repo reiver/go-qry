@@ -14,22 +14,22 @@ func TestNot_MarshalQRY_string(t *testing.T) {
 	}{
 		{
 			Unit: qry.False[string]{},
-			Expected: "{not false}",
+			Expected: "{not {false}}",
 		},
 		{
 			Unit: qry.True[string]{},
-			Expected: "{not true}",
+			Expected: "{not {true}}",
 		},
 
 
 
 		{
 			Unit: qry.Not[string]{qry.False[string]{}},
-			Expected: "{not {not false}}",
+			Expected: "{not {not {false}}}",
 		},
 		{
 			Unit: qry.Not[string]{qry.True[string]{}},
-			Expected: "{not {not true}}",
+			Expected: "{not {not {true}}}",
 		},
 	}
 

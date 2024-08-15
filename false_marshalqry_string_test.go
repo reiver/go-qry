@@ -19,7 +19,7 @@ func TestFalse_MarshalQRY(t *testing.T) {
 	}
 
 	{
-		var expected string = "false"
+		var expected string = "{false}"
 		var actual   string = string(actualBytes)
 
 		if expected != actual {
