@@ -52,37 +52,37 @@ func TestContainsString_Evaluate(t *testing.T) {
 
 
 		{
-			Unit: qry.ContainsString{"a"},
+			Unit: qry.ContainsString{[]string{"a"}},
 			Text: "",
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsString{"a"},
+			Unit: qry.ContainsString{[]string{"a"}},
 			Text: "apple",
 			Expected: true,
 		},
 		{
-			Unit: qry.ContainsString{"a"},
+			Unit: qry.ContainsString{[]string{"a"}},
 			Text: "banana",
 			Expected: true,
 		},
 		{
-			Unit: qry.ContainsString{"a"},
+			Unit: qry.ContainsString{[]string{"a"}},
 			Text: "cherry",
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsString{"a"},
+			Unit: qry.ContainsString{[]string{"a"}},
 			Text: "Hello world!",
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsString{"a"},
+			Unit: qry.ContainsString{[]string{"a"}},
 			Text: "😈",
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsString{"a"},
+			Unit: qry.ContainsString{[]string{"a"}},
 			Text: "ONCE TWICE THRICE FOURCE",
 			Expected: false,
 		},
@@ -90,37 +90,37 @@ func TestContainsString_Evaluate(t *testing.T) {
 
 
 		{
-			Unit: qry.ContainsString{"banana"},
+			Unit: qry.ContainsString{[]string{"banana"}},
 			Text: "",
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsString{"banana"},
+			Unit: qry.ContainsString{[]string{"banana"}},
 			Text: "apple",
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsString{"banana"},
+			Unit: qry.ContainsString{[]string{"banana"}},
 			Text: "banana",
 			Expected: true,
 		},
 		{
-			Unit: qry.ContainsString{"banana"},
+			Unit: qry.ContainsString{[]string{"banana"}},
 			Text: "cherry",
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsString{"banana"},
+			Unit: qry.ContainsString{[]string{"banana"}},
 			Text: "Hello world!",
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsString{"banana"},
+			Unit: qry.ContainsString{[]string{"banana"}},
 			Text: "😈",
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsString{"banana"},
+			Unit: qry.ContainsString{[]string{"banana"}},
 			Text: "ONCE TWICE THRICE FOURCE",
 			Expected: false,
 		},

@@ -13,30 +13,30 @@ func TestContainsString_MarshalQRY(t *testing.T) {
 		Expected string
 	}{
 		{
-			Unit: qry.ContainsString{Text:""},
-			Expected:          `{contains ""}`,
+			Unit: qry.ContainsString{Values:[]string{"apple"}},
+			Expected:                      `{contains apple}`,
+		},
+		{
+			Unit: qry.ContainsString{Values:[]string{"banana"}},
+			Expected:                      `{contains banana}`,
+		},
+		{
+			Unit: qry.ContainsString{Values:[]string{"cherry"}},
+			Expected:                      `{contains cherry}`,
 		},
 
 
 
 		{
-			Unit: qry.ContainsString{Text:"apple"},
-			Expected:          `{contains "apple"}`,
-		},
-		{
-			Unit: qry.ContainsString{Text:"banana"},
-			Expected:          `{contains "banana"}`,
-		},
-		{
-			Unit: qry.ContainsString{Text:"cherry"},
-			Expected:          `{contains "cherry"}`,
+			Unit: qry.ContainsString{Values:[]string{"😈"}},
+			Expected:                      `{contains 😈}`,
 		},
 
 
 
 		{
-			Unit: qry.ContainsString{Text:"😈"},
-			Expected:          `{contains "😈"}`,
+			Unit: qry.ContainsString{Values:[]string{"ONCE","TWICE","THRICE","FOURCE"}},
+			Expected:                      `{contains ONCE TWICE THRICE FOURCE}`,
 		},
 	}
 

@@ -13,30 +13,30 @@ func TestContainsBytes_MarshalQRY(t *testing.T) {
 		Expected string
 	}{
 		{
-			Unit: qry.ContainsBytes{Text:[]byte("")},
-			Expected:                `{contains ""}`,
+			Unit: qry.ContainsBytes{Values:[][]byte{[]byte("apple")}},
+			Expected:                            `{contains apple}`,
+		},
+		{
+			Unit: qry.ContainsBytes{Values:[][]byte{[]byte("banana")}},
+			Expected:                            `{contains banana}`,
+		},
+		{
+			Unit: qry.ContainsBytes{Values:[][]byte{[]byte("cherry")}},
+			Expected:                            `{contains cherry}`,
 		},
 
 
 
 		{
-			Unit: qry.ContainsBytes{Text:[]byte("apple")},
-			Expected:                `{contains "apple"}`,
-		},
-		{
-			Unit: qry.ContainsBytes{Text:[]byte("banana")},
-			Expected:                `{contains "banana"}`,
-		},
-		{
-			Unit: qry.ContainsBytes{Text:[]byte("cherry")},
-			Expected:                `{contains "cherry"}`,
+			Unit: qry.ContainsBytes{Values:[][]byte{[]byte("😈")}},
+			Expected:                            `{contains 😈}`,
 		},
 
 
 
 		{
-			Unit: qry.ContainsBytes{Text:[]byte("😈")},
-			Expected:                `{contains "😈"}`,
+			Unit: qry.ContainsBytes{Values:[][]byte{[]byte("ONCE"),[]byte("TWICE"),[]byte("THRICE"),[]byte("FOURCE")}},
+			Expected:                            `{contains ONCE TWICE THRICE FOURCE}`,
 		},
 	}
 

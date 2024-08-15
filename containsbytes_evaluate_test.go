@@ -52,37 +52,37 @@ func TestContainsBytes_Evaluate(t *testing.T) {
 
 
 		{
-			Unit: qry.ContainsBytes{[]byte("a")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("a")}},
 			Text: []byte(""),
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("a")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("a")}},
 			Text: []byte("apple"),
 			Expected: true,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("a")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("a")}},
 			Text: []byte("banana"),
 			Expected: true,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("a")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("a")}},
 			Text: []byte("cherry"),
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("a")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("a")}},
 			Text: []byte("Hello world!"),
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("a")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("a")}},
 			Text: []byte("😈"),
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("a")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("a")}},
 			Text: []byte("ONCE TWICE THRICE FOURCE"),
 			Expected: false,
 		},
@@ -90,37 +90,37 @@ func TestContainsBytes_Evaluate(t *testing.T) {
 
 
 		{
-			Unit: qry.ContainsBytes{[]byte("banana")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("banana")}},
 			Text: []byte(""),
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("banana")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("banana")}},
 			Text: []byte("apple"),
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("banana")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("banana")}},
 			Text: []byte("banana"),
 			Expected: true,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("banana")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("banana")}},
 			Text: []byte("cherry"),
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("banana")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("banana")}},
 			Text: []byte("Hello world!"),
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("banana")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("banana")}},
 			Text: []byte("😈"),
 			Expected: false,
 		},
 		{
-			Unit: qry.ContainsBytes{[]byte("banana")},
+			Unit: qry.ContainsBytes{[][]byte{[]byte("banana")}},
 			Text: []byte("ONCE TWICE THRICE FOURCE"),
 			Expected: false,
 		},
